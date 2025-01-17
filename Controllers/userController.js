@@ -7,6 +7,13 @@ const getUsers = async(req, res) => {
     const result = await usersCollection.find().toArray()
     res.send(result)
 }
+// Get user By id 
+const getUserById = async(req, res) => {
+    const email = req.params.email;
+    const query = {email: email}
+    const result = await usersCollection.findOne(query)
+    res.send(result)
+}
 // Check is Admin 
 const getAdmin = async(req, res) => {
     const email = req.params.email
@@ -59,4 +66,4 @@ const updateRole = async(req, res) => {
 }
 
 
-module.exports = {usersCollection, getUsers, addUser, updateRole, getAdmin, getTrainer}
+module.exports = {usersCollection, getUsers, addUser, updateRole, getAdmin, getTrainer, getUserById}
