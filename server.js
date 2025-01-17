@@ -5,6 +5,7 @@ const { connectToDatabase } = require("./config/database");
 const usersRoute = require("./Routes/usersRoutes");
 const applicationRoute = require("./Routes/applicationRoute");
 const classRoute = require("./Routes/classRoute");
+const trainerRoute = require("./Routes/trainerRoute");
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -20,6 +21,7 @@ connectToDatabase()
 app.use("/", usersRoute)
 app.use("/", applicationRoute)
 app.use("/", classRoute)
+app.use("/", trainerRoute)
 
 
 // Jwt Create 

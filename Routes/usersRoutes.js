@@ -1,6 +1,7 @@
 const express = require("express");
 const { getUsers, addUser, updateRole, getUserRole, getTrainer, getAdmin, getUserById } = require("../Controllers/userController");
 const verifyToken = require("../Middleware/verifyToken");
+const verifyAdmin = require("../Middleware/verifyAdmin");
 
 
 const usersRoute = express.Router()

@@ -1,4 +1,7 @@
+const { ObjectId } = require("mongodb");
 const { client } = require("../config/database");
+const { usersCollection } = require("./userController");
+const { trainerCollection } = require("./trainerController");
 
 const applicationCollection = client.db("Fitverse").collection("Trainer_application")
 
@@ -17,7 +20,34 @@ const getAllApplication = async(req, res) => {
 // Aceept application & update application status 
 const acceptApplication = async (req, res) => {
     const id = req.params.id
-    console.log(id)
+    const data =  req.body
+
+    const applicationQuery = {_id: new ObjectId(id)}
+    // Uppdata application status 
+    const updateStatus = {
+        $set: {
+            status: "approved",
+        }
+    }
+    const result = await applicationCollection.updateOne(applicationQuery,updateStatus)
+    // updata user role 
+    const userQuery = {_id: new ObjectId(data.userId)}
+    const updateRoleData = {
+        $set: {
+            role: "trainer"
+        }
+    }
+    const updateRole = await usersCollection.updateOne(userQuery, updateRoleData)
+    // Add trainer in database 
+    const trainerData = {
+        ...data,
+        role: "trainer",
+        status: "approved",
+    }
+    const addTrainer = await trainerCollection.insertOne(trainerData)
+
+    res.send(result)
+    
 }
 // apply trainer route
 // const getPending = async(req, res) => {
