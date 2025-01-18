@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const { client } = require("../config/database");
 
 const trainerCollection = client.db("Fitverse").collection("Trainer_Collection")
@@ -12,5 +13,12 @@ const getTrainerByEmail = async(req, res) => {
     const result = await trainerCollection.findOne(query)
     res.send(result)
 }
+const getTrainerById = async(req, res) => {
+    const id = req.params.id;
+    console.log(id)
+    const query = {_id: id}
+    const result = await trainerCollection.findOne(query)
+    res.send(result)
+}
 
-module.exports = {trainerCollection, getAllTrainers, getTrainerByEmail}
+module.exports = {trainerCollection, getAllTrainers, getTrainerByEmail, getTrainerById}
