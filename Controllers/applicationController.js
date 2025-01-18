@@ -49,11 +49,6 @@ const acceptApplication = async (req, res) => {
     res.send(result)
     
 }
-// apply trainer route
-// const getPending = async(req, res) => {
-//     const application = req.body
-//     const result = await applicationCollection.insertOne(application)
-//     res.send(result)
-// }
+
 
 module.exports = {applyTrainer, getAllApplication, acceptApplication}
