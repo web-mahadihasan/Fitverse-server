@@ -42,7 +42,7 @@ const acceptApplication = async (req, res) => {
     const trainerData = {
         ...data,
         role: "trainer",
-        status: "approved",
+        trainerStatus: "approved",
     }
     const addTrainer = await trainerCollection.insertOne(trainerData)
 

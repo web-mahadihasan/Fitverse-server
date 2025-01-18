@@ -6,6 +6,7 @@ const usersRoute = require("./Routes/usersRoutes");
 const applicationRoute = require("./Routes/applicationRoute");
 const classRoute = require("./Routes/classRoute");
 const trainerRoute = require("./Routes/trainerRoute");
+const availableSlotRoute = require("./Routes/availableSlotRoute");
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -19,9 +20,10 @@ connectToDatabase()
 
 // Connection Enter point 
 app.use("/", usersRoute)
-app.use("/", applicationRoute)
-app.use("/", classRoute)
-app.use("/", trainerRoute)
+app.use("/application-api", applicationRoute)
+app.use("/class-api", classRoute)
+app.use("/trainer-api", trainerRoute)
+app.use("/slot-api", availableSlotRoute)
 
 
 // Jwt Create 
