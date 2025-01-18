@@ -41,6 +41,7 @@ const getTrainer = async(req, res) => {
     res.send({trainer})
 }
 
+// Add user database 
 const addUser = async(req, res) => {
     const user = req.body;
     const query = {email: user.email}
@@ -52,6 +53,8 @@ const addUser = async(req, res) => {
         res.send(result);
     }
 }
+
+// Update role 
 const updateRole = async(req, res) => {
     const data = req.body;
     const filter = {userRole: role}
