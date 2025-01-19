@@ -50,5 +50,29 @@ const acceptApplication = async (req, res) => {
     res.send(result)
 }
 
+// Reject application
+const rejectApplication = async (req, res) => {
+    const id = req.params.id
+    const feeback = req.body
+    const filter = {_id: new ObjectId(id)}
 
-module.exports = {applyTrainer, getAllApplication, acceptApplication}
+    console.log(feeback)
+    const changeStatus = {
+        $set: {
+            trainerStatus: "reject",
+            note: feeback.rejectNote
+        }
+    }
+    const result = await applicationCollection.updateOne(filter, changeStatus)
+    res.send(result)
+}
+
+// get user application for user route 
+const getApplicationForUser = async(req, res) => {
+    const email = req.params.email;
+    const query = {email: email}
+
+    const result = await applicationCollection.find(query).toArray()
+    res.send(result)
+}
+module.exports = {applyTrainer, getAllApplication, acceptApplication, rejectApplication, getApplicationForUser}

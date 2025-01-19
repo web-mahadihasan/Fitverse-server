@@ -7,6 +7,7 @@ const applicationRoute = require("./Routes/applicationRoute");
 const classRoute = require("./Routes/classRoute");
 const trainerRoute = require("./Routes/trainerRoute");
 const availableSlotRoute = require("./Routes/availableSlotRoute");
+const newsLetterSubscriptionRoute = require("./Routes/NewsLetterSubscriptionRoute");
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -24,6 +25,7 @@ app.use("/application-api", applicationRoute)
 app.use("/class-api", classRoute)
 app.use("/trainer-api", trainerRoute)
 app.use("/slot-api", availableSlotRoute)
+app.use("/newsletter-api", newsLetterSubscriptionRoute)
 
 
 // Jwt Create 
