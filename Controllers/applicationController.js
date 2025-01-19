@@ -13,7 +13,8 @@ const applyTrainer = async(req, res) => {
 }
 // apply trainer route
 const getAllApplication = async(req, res) => {
-    const result = await applicationCollection.find().toArray()
+
+    const result = await applicationCollection.find().sort({ date: -1 }).toArray();
     res.send(result)
 }
 
@@ -26,7 +27,7 @@ const acceptApplication = async (req, res) => {
     // Uppdata application status 
     const updateStatus = {
         $set: {
-            status: "approved",
+            trainerStatus: "approved",
         }
     }
     const result = await applicationCollection.updateOne(applicationQuery,updateStatus)
@@ -47,7 +48,6 @@ const acceptApplication = async (req, res) => {
     const addTrainer = await trainerCollection.insertOne(trainerData)
 
     res.send(result)
-    
 }
 
 
