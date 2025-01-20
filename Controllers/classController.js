@@ -4,7 +4,7 @@ const { client } = require("../config/database");
 const classCollection = client.db("Fitverse").collection("Class_Collection")
 
 const getAllClass = async (req, res) => {
-    const result = await classCollection.find().toArray()
+    const result = await classCollection.find().sort({total_booked: -1}).toArray()
     res.send(result)
 }
 const AddClass = async (req, res) => {
@@ -13,4 +13,4 @@ const AddClass = async (req, res) => {
     res.send(result)
 }
 
-module.exports = {getAllClass, AddClass}
+module.exports = {classCollection, getAllClass, AddClass}

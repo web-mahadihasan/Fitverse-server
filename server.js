@@ -8,6 +8,7 @@ const classRoute = require("./Routes/classRoute");
 const trainerRoute = require("./Routes/trainerRoute");
 const availableSlotRoute = require("./Routes/availableSlotRoute");
 const newsLetterSubscriptionRoute = require("./Routes/NewsLetterSubscriptionRoute");
+const { paymentRoute } = require("./Routes/paymentsRoute");
 const stripe = require('stripe')(process.env.STRIPE_CLIENT_SCRET)
 
 const app = express();
@@ -21,13 +22,14 @@ app.use(express.json())
 connectToDatabase()
 
 
-// Connection Enter point 
+// Connection Entry point 
 app.use("/", usersRoute)
 app.use("/application-api", applicationRoute)
 app.use("/class-api", classRoute)
 app.use("/trainer-api", trainerRoute)
 app.use("/slot-api", availableSlotRoute)
 app.use("/newsletter-api", newsLetterSubscriptionRoute)
+app.use("/payment-api", paymentRoute)
 
 
 // Jwt Create 
