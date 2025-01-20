@@ -4,7 +4,8 @@ const { getAllTrainers, getTrainerByEmail, getTrainerById } = require("../Contro
 
 const trainerRoute = express.Router()
 
-trainerRoute.get("/trainers", verifyToken, getAllTrainers)
+trainerRoute.get("/trainers", getAllTrainers)
+
 trainerRoute.get("/trainers/:email", verifyToken, getTrainerByEmail)
 trainerRoute.get("/trainers/byId/:id", getTrainerById)
 
