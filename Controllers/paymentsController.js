@@ -20,4 +20,13 @@ const addNewPayment = async (req, res) => {
     res.send(result)
 }
 
-module.exports = {addNewPayment}
+// For use Payment history 
+const getMyPayment = async(req, res) => {
+  const email = req.params.email;
+  const query = {userEmail: email}
+
+  const result = await paymentCollection.find(query).sort({date: -1}).toArray()
+  res.send(result)
+}
+
+module.exports = {addNewPayment, getMyPayment}
