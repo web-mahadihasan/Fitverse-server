@@ -6,8 +6,10 @@ const trainerRoute = express.Router()
 // User Route 
 trainerRoute.get("/trainers", getAllTrainers)
 
+trainerRoute.get("/trainers/byId/:id", getTrainerById)
+
+// For Trainer Route 
 trainerRoute.get("/trainers/:email", verifyToken, getTrainerByEmail)
 
-trainerRoute.get("/trainers/byId/:id", getTrainerById)
 
 module.exports = trainerRoute;
