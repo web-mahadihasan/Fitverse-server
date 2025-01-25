@@ -9,6 +9,9 @@ const trainerRoute = require("./Routes/trainerRoute");
 const availableSlotRoute = require("./Routes/availableSlotRoute");
 const newsLetterSubscriptionRoute = require("./Routes/NewsLetterSubscriptionRoute");
 const { paymentRoute } = require("./Routes/paymentsRoute");
+const rejectedApplicationRoute = require("./Routes/rejectedApplicationRoute");
+const reviewRoute = require("./Routes/reviewRoute");
+const forumsRoute = require("./Routes/forumsRoute");
 const stripe = require('stripe')(process.env.STRIPE_CLIENT_SCRET)
 
 const app = express();
@@ -30,6 +33,9 @@ app.use("/trainer-api", trainerRoute)
 app.use("/slot-api", availableSlotRoute)
 app.use("/newsletter-api", newsLetterSubscriptionRoute)
 app.use("/payment-api", paymentRoute)
+app.use("/rejected-application-api", rejectedApplicationRoute)
+app.use("/review-api", reviewRoute)
+app.use("/forum-api", forumsRoute)
 
 
 // Jwt Create 

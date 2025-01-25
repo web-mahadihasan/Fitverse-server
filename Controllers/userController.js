@@ -68,5 +68,23 @@ const updateRole = async(req, res) => {
     res.send(result);
 }
 
-
-module.exports = {usersCollection, getUsers, addUser, updateRole, getAdmin, getTrainer, getUserById}
+// Update Profie for user, trainer, admin 
+const updateProfile = async (req, res) => {
+    const email = req.params.email;
+    const filter = {email: email}
+    const profile = req.body;
+    const updateData = {
+        $set: {
+            name: profile?.name,
+            image: profile?.image,
+            location: profile?.location,
+            about: profile?.about,
+            github: profile?.github,
+            facebook: profile?.facebook,
+            linkedin: profile?.linkedin
+        }
+    }
+    const result = await usersCollection.updateOne(filter, updateData)
+    res.send(result)
+}
+module.exports = {usersCollection, getUsers, addUser, updateRole, getAdmin, getTrainer, getUserById, updateProfile}

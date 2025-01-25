@@ -1,5 +1,6 @@
 const { ObjectId } = require("mongodb");
 const { client } = require("../config/database");
+const { usersCollection } = require("./userController");
 
 const trainerCollection = client.db("Fitverse").collection("Trainer_Collection")
 
@@ -45,6 +46,25 @@ const getTrainerByEmail = async(req, res) => {
     res.send(result)
 }
 
+// For adming route 
+const removedTrainer = async (req, res) => {
+    const id = req.params.id;
 
+    const trainer = await trainerCollection.findOne({_id: id})
 
-module.exports = {trainerCollection, getAllTrainers, getTrainerByEmail, getTrainerById}
+    const userId = trainer?.userId
+    
+    const filter = {_id: new ObjectId(userId)}
+    
+    const updateRole = {
+        $set: {
+            role: 'member'
+        }
+    }
+    const update = await usersCollection.updateOne(filter, updateRole)
+
+    const result = await trainerCollection.deleteOne({_id: id})
+    res.send(result)
+}
+
+module.exports = {trainerCollection, getAllTrainers, getTrainerByEmail, getTrainerById, removedTrainer}
