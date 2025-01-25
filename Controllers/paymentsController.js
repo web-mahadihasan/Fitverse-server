@@ -60,4 +60,8 @@ const allPayments = async (req, res) => {
   }
   
 }
+
+// All Payments for geting info 
+
+
 module.exports = {addNewPayment, getMyPayment, getMyClassMember, allPayments}

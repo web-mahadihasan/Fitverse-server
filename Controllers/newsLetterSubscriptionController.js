@@ -1,4 +1,4 @@
-const { Admin } = require("mongodb");
+// const { Admin } = require("mongodb");
 const { client } = require("../config/database");
 
 const newsLetterSubscriber = client.db("Fitverse").collection("NewsLetterSubscribers_Collection")

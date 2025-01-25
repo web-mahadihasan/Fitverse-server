@@ -18,4 +18,6 @@ paymentRoute.get("/my-class-member/:id", verifyToken, verifyTrainer, getMyClassM
 // Admin Route for get all payments 
 paymentRoute.get("/all-payments", verifyToken, verifyAdmin, allPayments)
 
+
+
 module.exports ={paymentRoute}
