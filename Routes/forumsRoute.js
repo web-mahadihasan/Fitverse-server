@@ -14,8 +14,8 @@ forumsRoute.get("/forums", getAllforums)
 forumsRoute.get("/forum-details/:id", getDetailsById)
 
 // For route upvote 
-forumsRoute.post("/upvote/:id",verifyToken, addNewUpVote)
-forumsRoute.post("/downvote/:id",verifyToken, addNewDownVote)
+forumsRoute.post("/upvote/:id", addNewUpVote)
+forumsRoute.post("/downvote/:id", addNewDownVote)
 
 
 module.exports = forumsRoute
