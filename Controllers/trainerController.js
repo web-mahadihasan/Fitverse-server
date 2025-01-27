@@ -67,4 +67,10 @@ const removedTrainer = async (req, res) => {
     res.send(result)
 }
 
-module.exports = {trainerCollection, getAllTrainers, getTrainerByEmail, getTrainerById, removedTrainer}
+// all trainers for admin home
+const allTrainers = async (req, res) => {
+    const result = await trainerCollection.find().toArray()
+    res.send(result)
+}
+
+module.exports = {trainerCollection, getAllTrainers, getTrainerByEmail, getTrainerById, removedTrainer, allTrainers}

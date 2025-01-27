@@ -8,7 +8,7 @@ const usersRoute = express.Router()
 
 // For user Route 
 usersRoute.get("/users",verifyToken, getUsers);
-usersRoute.get("/users/:email",verifyToken, getUserById);
+usersRoute.get("/users/:email",  getUserById);
 
 // For admin route 
 usersRoute.get("/users/admin/:email",verifyToken, getAdmin);

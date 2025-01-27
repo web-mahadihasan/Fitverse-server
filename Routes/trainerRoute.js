@@ -1,6 +1,6 @@
 const express = require("express");
 const verifyToken = require("../Middleware/verifyToken");
-const { getAllTrainers, getTrainerByEmail, getTrainerById, removedTrainer } = require("../Controllers/trainerController");
+const { getAllTrainers, getTrainerByEmail, getTrainerById, removedTrainer, allTrainers } = require("../Controllers/trainerController");
 const verifyAdmin = require("../Middleware/verifyAdmin");
 
 const trainerRoute = express.Router()
@@ -15,4 +15,6 @@ trainerRoute.get("/trainers/:email", verifyToken, getTrainerByEmail)
 // Adming route for trainer remove
 trainerRoute.delete("/removed-trainer/:id", verifyToken, verifyAdmin, removedTrainer)
 
+//Get all trainers for admin dashbord home
+trainerRoute.get("/all-trainer", verifyToken, verifyAdmin, allTrainers)
 module.exports = trainerRoute;
