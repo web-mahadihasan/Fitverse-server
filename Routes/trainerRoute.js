@@ -4,7 +4,7 @@ const { getAllTrainers, getTrainerByEmail, getTrainerById, removedTrainer, allTr
 const verifyAdmin = require("../Middleware/verifyAdmin");
 
 const trainerRoute = express.Router()
-// User Route 
+// User Route for get all trainers
 trainerRoute.get("/trainers", getAllTrainers)
 
 trainerRoute.get("/trainers/byId/:id", getTrainerById)
