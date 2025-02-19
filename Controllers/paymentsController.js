@@ -61,7 +61,14 @@ const allPayments = async (req, res) => {
   
 }
 
-// All Payments for geting info 
+//Get purchase user for a trainer by trainer id
+const purchaseUserForTrainer = async (req, res) => {
+  const id = req.params.id; 
 
+  const query = {trainerId: id}
+  const result = await paymentCollection.find(query).toArray()
+  res.send(result)
+  }
+  
 
-module.exports = {addNewPayment, getMyPayment, getMyClassMember, allPayments}
+module.exports = {addNewPayment, getMyPayment, getMyClassMember, allPayments, purchaseUserForTrainer}
